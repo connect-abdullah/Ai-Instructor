@@ -2,7 +2,7 @@
 
 const NewCompanionPage = () => {
   return (
-    <div>page</div>
+    <div>New Companion</div>
   )
 }
 

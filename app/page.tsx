@@ -38,7 +38,7 @@ const Page = () => {
         companions={recentSessions}
         classNames="w-2/3 max-lg:w-full"
         />
-        <CTA/>
+        <CTA />
       </section>
     </main>
   )
