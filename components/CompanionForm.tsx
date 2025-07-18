@@ -66,6 +66,8 @@ const CompanionForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7">
+        
+        {/* Username Field */}
         <FormField
           control={form.control}
           name="username"
@@ -84,6 +86,8 @@ const CompanionForm = () => {
             </FormItem>
           )}
         />
+
+        {/* Subject Field */}
         <FormField
           control={form.control}
           name="subject"
@@ -115,6 +119,8 @@ const CompanionForm = () => {
             </FormItem>
           )}
         />
+
+        {/* Topic Field */}
         <FormField
           control={form.control}
           name="topic"
@@ -134,6 +140,7 @@ const CompanionForm = () => {
           )}
         />
 
+        {/* Voice Field */}
         <FormField
           control={form.control}
           name="voice"
@@ -162,6 +169,8 @@ const CompanionForm = () => {
             </FormItem>
           )}
         />
+
+        {/* Style Field */}
         <FormField
           control={form.control}
           name="style"
@@ -190,6 +199,8 @@ const CompanionForm = () => {
             </FormItem>
           )}
         />
+
+        {/* Duration Field */}
         <FormField
           control={form.control}
           name="duration"
