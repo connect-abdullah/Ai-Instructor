@@ -22,9 +22,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { subjects } from "@/constants";
 import { Textarea } from "./ui/textarea";
+import { createCompanion } from "@/lib/actions/companion.actions";
+import { redirect } from "next/navigation";
 
 const formSchema = z.object({
-  username: z.string().min(1, {
+  name: z.string().min(1, {
     message: "Companion is required.",
   }),
   subject: z.string().min(1, {
@@ -50,7 +52,7 @@ const CompanionForm = () => {
   const form = useForm<CompanionFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      name: "",
       subject: "",
       topic: "",
       voice: "",
@@ -59,8 +61,15 @@ const CompanionForm = () => {
     },
   });
 
-  const onSubmit = (values: CompanionFormValues) => {
-    console.log(values);
+  const onSubmit = async (values: CompanionFormValues) => {
+    const companion = await createCompanion(values);
+
+    if(companion) {
+        redirect(`/companions/${companion.id}`)
+    } else {
+        console.log('Failed to create a companion');
+        redirect('/');
+    }
   };
 
   return (
@@ -70,7 +79,7 @@ const CompanionForm = () => {
         {/* Username Field */}
         <FormField
           control={form.control}
-          name="username"
+          name="name"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Companion Name</FormLabel>
@@ -212,6 +221,7 @@ const CompanionForm = () => {
                   placeholder="15"
                   type="number"
                   {...field}
+                  onChange={(e) => field.onChange(Number(e.target.value))}
                   className="input"
                 />
               </FormControl>
