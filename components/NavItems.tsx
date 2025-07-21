@@ -2,18 +2,18 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { SignedIn } from "@clerk/nextjs"
 
-const navItems = [
+const publicNavItems = [
     {label : "Home", href : "/"},
     {label : "Companions", href : "/companions"},
-    {label : "My Journey", href : "/my-journey"},
 ]
 
 const NavItems = () => {
     const pathname = usePathname();
   return (
     <nav className="flex items-center gap-4 max-sm:gap-2">
-        {navItems.map(({label,href}) => (
+        {publicNavItems.map(({label,href}) => (
             <Link
                 href={href}
                 key={label}
@@ -22,6 +22,14 @@ const NavItems = () => {
                 {label}
             </Link>
         ))}
+        <SignedIn>
+            <Link
+                href="/my-journey"
+                className={`px-3 max-sm:px-1 max-sm:text-[11px] ${pathname === '/my-journey' ? 'text-primary font-semibold' : ''}`}
+            >
+                My Journey
+            </Link>
+        </SignedIn>
     </nav>
   )
 }

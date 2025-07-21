@@ -1,7 +1,6 @@
 import CTA from "@/components/CTA";
 import CompanionCard from "@/components/CompanionCard";
 import CompanionList from "@/components/CompanionList";
-import { recentSessions } from "@/constants";
 import { getAllCompanions, getRecentSessions } from "@/lib/actions/companion.actions";
 import { getSubjectColor } from "@/lib/utils";
 import React from "react";
@@ -26,7 +25,7 @@ const Page = async() => {
       
       <section className="home-section">
         <CompanionList 
-        title="Recently Completed Sessions"
+        title="Recent Sessions"
         companions={recentSessionCompanions}
         classNames="w-2/3 max-lg:w-full"
         />
