@@ -75,7 +75,7 @@ const ProfilePage = async () => {
           </AccordionTrigger>
           <AccordionContent>
             <div className="mt-2">
-              {/* @ts-expect-error sessionHistory is not a Companion[] */}
+              {/* @ts-expect-error -- > companion[]*/}
               <CompanionList title="Recent Sessions" companions={sessionHistory}/>
             </div>
           </AccordionContent>

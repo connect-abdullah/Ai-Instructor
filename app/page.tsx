@@ -1,3 +1,6 @@
+// ✅ Force dynamic rendering to prevent build error
+export const dynamic = 'force-dynamic';
+
 import CTA from "@/components/CTA";
 import CompanionCard from "@/components/CompanionCard";
 import CompanionList from "@/components/CompanionList";
