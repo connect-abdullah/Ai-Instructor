@@ -11,18 +11,18 @@ const Navbar = () => {
           <Image 
             src="/images/logo.svg" 
             alt="logo" 
-            width={46} 
-            height={44}
+            width={56} 
+            height={50}
             className="max-sm:w-8 max-sm:h-8" 
           />
         </div>
       </Link>
 
-      <div className="flex items-center gap-8 max-sm:gap-4">
+      <div className="flex items-center gap-8 max-sm:gap-2">
         <NavItems />
         <SignedOut>
           <SignInButton mode="modal">
-            <button className="btn-signin max-sm:px-2 max-sm:py-1.5 max-sm:text-xs">
+            <button className="btn-signin max-sm:px-2 max-sm:py-1 max-sm:text-[8px]">
               Sign In
             </button>
           </SignInButton>

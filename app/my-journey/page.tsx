@@ -15,10 +15,13 @@ import { redirect } from "next/navigation";
 
 const ProfilePage = async () => {
   const user = await currentUser();
-  if (!user) redirect("/sign-in");
+  
+  if (!user) {
+    redirect("/sign-in");
+  }
 
-  const companions = await getUserCompanions(user?.id);
-  const sessionHistory = await getUserSessions(user?.id);
+  const companions = await getUserCompanions(user.id);
+  const sessionHistory = await getUserSessions(user.id);
 
   return (
     <main className="w-full max-w-5xl mx-auto px-4 py-8">
@@ -27,8 +30,8 @@ const ProfilePage = async () => {
         <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-8 flex-1">
           <div className="flex-shrink-0">
             <Image
-              src={user?.imageUrl}
-              alt={user?.id}
+              src={user.imageUrl}
+              alt={user.id}
               width={110}
               height={110}
               className="rounded-full border-2 border-primary object-cover"
@@ -36,13 +39,13 @@ const ProfilePage = async () => {
           </div>
           <div className="flex flex-col gap-2 items-center sm:items-start">
             <h1 className="font-bold text-2xl md:text-3xl">
-              {user?.firstName} {user?.lastName}
+              {user.firstName} {user.lastName}
             </h1>
             <p className="text-sm text-muted-foreground break-all">
-              <span className="font-medium">username:</span> {user?.username}
+              <span className="font-medium">username:</span> {user.username}
             </p>
             <p className="text-sm text-muted-foreground break-all">
-              {user?.emailAddresses[0].emailAddress}
+              {user.emailAddresses[0].emailAddress}
             </p>
           </div>
         </div>
@@ -72,6 +75,7 @@ const ProfilePage = async () => {
           </AccordionTrigger>
           <AccordionContent>
             <div className="mt-2">
+              {/* @ts-expect-error sessionHistory is not a Companion[] */}
               <CompanionList title="Recent Sessions" companions={sessionHistory}/>
             </div>
           </AccordionContent>
